@@ -31,7 +31,7 @@ namespace AWSServerlessDemo.Web
             var userRepo = new UserRepository(connString);
             services.Add(new ServiceDescriptor(typeof(UserRepository), userRepo));
 
-          
+            services.AddCors();
 
             services.AddControllers();
         }
@@ -47,6 +47,12 @@ namespace AWSServerlessDemo.Web
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            // global cors policy
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseAuthorization();
 
@@ -67,10 +73,10 @@ namespace AWSServerlessDemo.Web
 
             if (string.IsNullOrEmpty(dbname)) return null;
 
-            var username = "";
+            var username = "postgres";
             var password = "";
-            var hostname = "";
-            var port = "";
+            var hostname = "hexquotedb.cmb1qrijkowb.eu-central-1.rds.amazonaws.com";
+            var port = "5432";
 
 
             return $"User ID={username};Password={password};Host={hostname};Port={port};Database={dbname};";

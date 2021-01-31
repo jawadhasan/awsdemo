@@ -1,0 +1,11 @@
+<h5 class="card-title">Token Generator</h5>
+<div class="card" >
+   
+    <div class="card-body">     
+      <p class="card-text">Token: {{result.guid}}</p>
+      <p class="card-text">expires: {{result.expires}}</p>
+      <p class="card-text">issuer: {{result.issuer}}</p>
+     
+      <button (click)="refreshToken()" class="btn btn-success">Refresh Token</button>
+    </div>
+  </div>
