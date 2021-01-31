@@ -70,7 +70,7 @@ namespace AWSServerlessDemo.Web
             var username = "";
             var password = "";
             var hostname = "";
-            var port = "5432";
+            var port = "";
 
 
             return $"User ID={username};Password={password};Host={hostname};Port={port};Database={dbname};";
