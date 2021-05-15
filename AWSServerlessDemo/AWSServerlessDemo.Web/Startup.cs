@@ -28,13 +28,14 @@ namespace AWSServerlessDemo.Web
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
-            //var connString = GetRDSConnectionString();
+            //var connString = DatabaseHelpers.GetRDSConnectionString();
             //var userRepo = new UserRepository(connString);
             //services.Add(new ServiceDescriptor(typeof(UserRepository), userRepo));
-            //  var connString = GetPostgresConnectionString();
+
+            //var connString = Environment.GetEnvironmentVariable("DefaultConnection");
 
 
-            var connString = Environment.GetEnvironmentVariable("DefaultConnection");
+            var connString = DatabaseHelpers.GetPostgresConnectionString();
             var productRepo = new ProductsRepository(connString);
             services.Add(new ServiceDescriptor(typeof(ProductsRepository), productRepo));
 
@@ -42,21 +43,20 @@ namespace AWSServerlessDemo.Web
             services.AddControllers();
 
 
-            services.AddAuthentication("Bearer")
-                .AddJwtBearer("Bearer", options => {
-                    options.IncludeErrorDetails = true;
-                    options.Authority = Environment.GetEnvironmentVariable("Authority");
-                    options.RequireHttpsMetadata = false;
-                    options.Audience = "api1";
-                    options.RequireHttpsMetadata = false;
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateAudience = false,
-                        ValidIssuer = Environment.GetEnvironmentVariable("Authority"),
-                        //NameClaimType = JwtClaimTypes.Name,
-                        //RoleClaimType = JwtClaimTypes.Role,
-                    };
-                });
+            //services.AddAuthentication("Bearer")
+            //    .AddJwtBearer("Bearer", options => {
+            //        options.IncludeErrorDetails = true;
+            //        options.Authority = Environment.GetEnvironmentVariable("Authority");
+            //        options.Audience = "api1";
+            //        options.RequireHttpsMetadata = false;
+            //        options.TokenValidationParameters = new TokenValidationParameters
+            //        {
+            //            ValidateAudience = false,
+            //            ValidIssuer = Environment.GetEnvironmentVariable("Authority"),
+            //            //NameClaimType = JwtClaimTypes.Name,
+            //            //RoleClaimType = JwtClaimTypes.Role,
+            //        };
+            //    });
 
 
         }
@@ -81,8 +81,8 @@ namespace AWSServerlessDemo.Web
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+            //app.UseAuthentication();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -94,36 +94,6 @@ namespace AWSServerlessDemo.Web
             });
         }
 
-        public static string GetPostgresConnectionString()
-        {
 
-            var dbname = "productsdb";
-
-            if (string.IsNullOrEmpty(dbname)) return null;
-
-            var username = "postgres";
-            var password = "sasa";
-            var hostname = "10.0.2.8";
-            var port = "5432";
-
-
-            return $"User ID={username};Password={password};Host={hostname};Port={port};Database={dbname};";
-        }
-
-        public static string GetRDSConnectionString()
-        {
-
-            var dbname = "registration";
-
-            if (string.IsNullOrEmpty(dbname)) return null;
-
-            var username = "postgres";
-            var password = "sasasasa";
-            var hostname = "hexquotedb.cmb1qrijkowb.eu-central-1.rds.amazonaws.com";
-            var port = "5432";
-
-
-            return $"User ID={username};Password={password};Host={hostname};Port={port};Database={dbname};";
-        }
     }
 }
