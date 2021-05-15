@@ -16,7 +16,7 @@ namespace AWSServerlessDemo.Web
 
             var username = "postgres";
             var password = "sasa";
-            var hostname = "10.0.2.99";//
+            var hostname = "10.0.2.99";//10.0.2.99
             var port = "5432";
 
 

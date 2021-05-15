@@ -31,11 +31,8 @@ namespace AWSServerlessDemo.Web
             //var connString = DatabaseHelpers.GetRDSConnectionString();
             //var userRepo = new UserRepository(connString);
             //services.Add(new ServiceDescriptor(typeof(UserRepository), userRepo));
-
-            //var connString = Environment.GetEnvironmentVariable("DefaultConnection");
-
-
-            var connString = DatabaseHelpers.GetPostgresConnectionString();
+            
+            var connString = DatabaseHelpers.GetPostgresConnectionString(); //Environment.GetEnvironmentVariable("DefaultConnection");
             var productRepo = new ProductsRepository(connString);
             services.Add(new ServiceDescriptor(typeof(ProductsRepository), productRepo));
 
