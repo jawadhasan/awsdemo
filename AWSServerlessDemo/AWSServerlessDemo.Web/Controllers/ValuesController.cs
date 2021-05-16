@@ -74,7 +74,7 @@ namespace AWSServerlessDemo.Web.Controllers
             {  
                 Notes = "Environment.GetEnvironmentVariable('KEYNAME')",
                 Authority = Environment.GetEnvironmentVariable("Authority"),
-                DefaultConnection = Environment.GetEnvironmentVariable("ConnectionStrings:DefaultConnection")
+                DefaultConnection = Environment.GetEnvironmentVariable("DefaultConnection")
             };
 
             return Ok(payload);

@@ -21,8 +21,16 @@ namespace AWSServerlessDemo.Web.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var products = _productsRepository.GetAll();
-            return Ok(products);
+            try
+            {
+                var products = _productsRepository.GetAll();
+                return Ok(products);
+            }
+            catch (Exception e)
+            {
+                return Ok(e);
+            }
+           
         }
     }
 }

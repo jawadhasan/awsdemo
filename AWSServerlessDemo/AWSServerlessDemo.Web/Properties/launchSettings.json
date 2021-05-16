@@ -12,7 +12,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ConnectionStrings:DefaultConnection": "Host=localhost;Database=productsdb;Username=postgres;Password=sasa",
+        "DefaultConnection": "Host=localhost;Database=productsdb;Username=postgres;Password=sasa",
         "Authority": "https://localhost:5001/",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

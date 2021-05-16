@@ -33,7 +33,7 @@ namespace AWSServerlessDemo.Web
             //services.Add(new ServiceDescriptor(typeof(UserRepository), userRepo));
             //var connString = DatabaseHelpers.GetPostgresConnectionString(); //Environment.GetEnvironmentVariable("DefaultConnection");
 
-            var connString = Configuration.GetConnectionString("DefaultConnection");
+            var connString = Configuration.GetSection("DefaultConnection").Value;
             var authority = Configuration.GetSection("Authority");
 
             var productRepo = new ProductsRepository(connString);
@@ -89,7 +89,7 @@ namespace AWSServerlessDemo.Web
                 endpoints.MapControllers();
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Welcome ServerlessDemo App");
+                    await context.Response.WriteAsync($"Welcome ServerlessDemo App");
                 });
             });
         }
