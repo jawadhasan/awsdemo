@@ -9,3 +9,15 @@
       <button (click)="refreshToken()" class="btn btn-success">Refresh Token</button>
     </div>
   </div>
+
+
+  <h5 class="card-title">Environment</h5>
+  <div class="card" >
+   
+    <div class="card-body">     
+      <p class="card-text">Authority: {{envResult.authority}}</p>
+      <p class="card-text">DefaultConnection: {{envResult.defaultConnection}}</p>    
+     
+      <button (click)="getEnv()" class="btn btn-success">Get Env</button>
+    </div>
+  </div>

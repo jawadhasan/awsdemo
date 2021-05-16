@@ -71,9 +71,10 @@ namespace AWSServerlessDemo.Web.Controllers
         public dynamic GetEnv()
         {
             dynamic payload = new
-            {
+            {  
+                Notes = "Environment.GetEnvironmentVariable('KEYNAME')",
                 Authority = Environment.GetEnvironmentVariable("Authority"),
-                DefaultConnection = Environment.GetEnvironmentVariable("DefaultConnection")
+                DefaultConnection = Environment.GetEnvironmentVariable("ConnectionStrings:DefaultConnection")
             };
 
             return Ok(payload);

@@ -12,8 +12,8 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "DefaultConnection": "Host=localhost;Database=productsdb;Username=postgres;Password=sasa",
-        "Authority": "https://xeyiifiyp3.execute-api.ap-northeast-1.amazonaws.com/Prod/",
+        "ConnectionStrings:DefaultConnection": "Host=localhost;Database=productsdb;Username=postgres;Password=sasa",
+        "Authority": "https://localhost:5001/",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },

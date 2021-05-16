@@ -9,12 +9,14 @@ import { ApiService } from '../api.service';
 export class TokenComponent implements OnInit {
 
   result:any={};
+  envResult:any={};
   constructor( public apiService: ApiService,) { }
 
  
   ngOnInit(): void {
 
         this.refreshToken();
+        this.getEnv();
   }
 
   refreshToken(){
@@ -22,6 +24,15 @@ export class TokenComponent implements OnInit {
     this.apiService.getToken().subscribe((res: any)=>{
 
       this.result = res;
+ 
+     });
+  }
+
+  getEnv(){
+    //get data from server
+    this.apiService.getEnv().subscribe((res: any)=>{
+
+      this.envResult = res;
  
      });
   }
