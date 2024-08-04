@@ -1,9 +1,13 @@
 # AWS Demo
 
-http://hexquote.com/
+AWS Application Deployment Basics – .NET Core Apps    
+
+using VPC, EC2 infrastructure.     
 
 
-## .NET Core Application
+## Article
+
+https://hexquote.com/aws-application-deployment-basics-net-core-apps/
 
 # Publish .netApp Demo
 ```bash
